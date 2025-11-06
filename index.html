@@ -119,6 +119,83 @@
           <a href="#booking" class="package-button">Book Now</a>
         </div>
       </div>
+      <!-- Holiday Family Photo Special -->
+      <div class="package-item">
+        <div class="package-header">
+          <h3>Holiday Family Photo Special</h3>
+          <div class="price">$88.99</div>
+        </div>
+        <div class="package-content">
+          <p>For families looking to capture the special moments that the holiday season brings!</p>
+          <ul>
+            <li>On-location session (your choice of local outdoor spot in the New Port Richey area and up to 20 miles outside of NPR)</li>
+            <li>Up to 1 hour and 30 minutes of shooting time</li>
+            <li>Up to 25 professionally edited digital photos</li>
+            <li>Online gallery for viewing and downloading images</li>
+            <li>No minimum photo count — you get all the best images, up to 25 total!</li>
+          </ul>
+          <p><strong>Optional Add-On:</strong> Custom Christmas Card Design — +$20 (digital holiday card layout featuring your favorite photos)</p>
+          <p class="policy-note">No hidden fees or required print orders — all digital! Families only (up to 6 people; add $10 per extra person).</p>
+          <ul class="policy-note">
+            <li><strong>Deposit:</strong> 25% non-refundable to reserve your date.</li>
+            <li><strong>Delivery:</strong> Edited photos delivered within 14 days.</li>
+            <li><strong>Locations:</strong> Within 20 miles of New Port Richey.</li>
+          </ul>
+          <a href="#booking" class="package-button">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Holiday Special (Individual Shots) -->
+      <div class="package-item">
+        <div class="package-header">
+          <h3>Holiday Special (Individual Shots)</h3>
+          <div class="price">$69.99</div>
+        </div>
+        <div class="package-content">
+          <ul>
+            <li>On-location session (your choice of local outdoor spot in the New Port Richey area and up to 20 miles out of NPR)</li>
+            <li>Up to 1 hour of shooting time</li>
+            <li>Up to 18 professionally edited digital photos</li>
+            <li>Online gallery for viewing and downloading images</li>
+            <li>No minimum photo count — you get all the best images, up to 18 total!</li>
+          </ul>
+          <p><strong>Optional Add-On:</strong> Custom Christmas Card Design — +$20</p>
+          <p class="policy-note">No hidden fees or required print orders — all digital! Families only (up to 6 people; add $10 per extra person).</p>
+          <ul class="policy-note">
+            <li><strong>Deposit:</strong> 25% non-refundable to reserve your date.</li>
+            <li><strong>Delivery:</strong> Edited photos delivered within 14 days.</li>
+            <li><strong>Locations:</strong> Within 20 miles of New Port Richey.</li>
+          </ul>
+          <a href="#booking" class="package-button">Book Now</a>
+        </div>
+      </div>
+
+      <!-- Senior Portrait Package -->
+      <div class="package-item">
+        <div class="package-header">
+          <h3>Senior Portrait Package</h3>
+          <div class="price">$85.99</div>
+        </div>
+        <div class="package-content">
+          <p>Celebrate your senior year with a personalized, fun photo session that captures you!</p>
+          <ul>
+            <li>On-location photoshoot (your choice of local outdoor spot around New Port Richey and up to 20 miles out of NPR)</li>
+            <li>Up to 1 hour of shooting time</li>
+            <li>1 outfit</li>
+            <li>Up to 18 professionally edited digital photos</li>
+            <li>Online gallery for viewing and downloading your images</li>
+            <li>Print release included</li>
+          </ul>
+          <p><strong>Optional Add-Ons:</strong> Extra outfit/additional location — +$25; Rush editing (within 4 days) — +$40; Additional time (every additional 30 minutes) — +$25</p>
+          <p class="policy-note">Key booking details:</p>
+          <ul class="policy-note">
+            <li><strong>Deposit:</strong> 25% non-refundable to reserve your session.</li>
+            <li><strong>Delivery:</strong> Edited photos delivered within 14 days.</li>
+            <li><strong>Locations:</strong> Within 20 miles of New Port Richey.</li>
+          </ul>
+          <a href="#booking" class="package-button">Book Now</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -335,6 +412,10 @@
             <button type="button" data-value="1 hour - $109.99" class="option-btn">1 hour ($109.99)</button>
             <button type="button" data-value="1.5 hr - $154.99" class="option-btn">1 hour 30 min ($154.99)</button>
             <button type="button" data-value="2 hr - $189.99" class="option-btn">2 hours ($189.99)</button>
+            <!-- New packages -->
+            <button type="button" data-value="Holiday Family Photo Special - $88.99" class="option-btn">Holiday Family Photo Special ($88.99)</button>
+            <button type="button" data-value="Holiday Individual Shots - $69.99" class="option-btn">Holiday Special - Individual Shots ($69.99)</button>
+            <button type="button" data-value="Senior Portrait Package - $85.99" class="option-btn">Senior Portrait Package ($85.99)</button>
         </div>
         <input type="hidden" name="session_length" id="session_length_input">
     </div>
@@ -367,6 +448,24 @@
         <label for="effects">Special Photoshop Requests / Effects:</label>
         <textarea name="effects" id="effects" placeholder="e.g., color presets, textures, background edits, character additions"></textarea>
     </div>
+
+  <!-- Package-specific Add-Ons -->
+  <div id="packageAddOnsSection" style="display:none;">
+    <h3>Package Add-Ons</h3>
+    <!-- Christmas Card add-on (for holiday packages) -->
+    <div id="christmasAddOn" style="display:none; margin-bottom:0.8rem;">
+      <label><input type="checkbox" id="add_on_christmas_card" name="add_ons" value="Christmas Card"> Custom Christmas Card Design — +$20</label>
+    </div>
+
+    <!-- Senior package specific add-ons -->
+    <div id="seniorAddOns" style="display:none; margin-bottom:0.8rem;">
+      <label><input type="checkbox" id="add_on_extra_outfit" name="add_ons" value="Extra Outfit"> Extra outfit or additional location — +$25</label>
+      <br>
+      <label><input type="checkbox" id="add_on_rush_edit" name="add_ons" value="Rush Edit"> Rush editing (within 4 days) — +$40</label>
+      <br>
+      <label>Additional 30-minute blocks: <input type="number" id="add_on_extra_time_count" name="add_on_extra_time_count" min="0" value="0" style="width:80px; margin-left:8px;"> (+$25 per 30 min)</label>
+    </div>
+  </div>
 
     <div id="videoEditingSection">
         <h3>Video Editing Packages</h3>
@@ -473,6 +572,11 @@
             "1 hour - $109.99": 109.99,
             "1.5 hr - $154.99": 154.99,
             "2 hr - $189.99": 189.99
+    ,
+      // Added holiday and senior package prices
+      "Holiday Family Photo Special - $88.99": 88.99,
+      "Holiday Individual Shots - $69.99": 69.99,
+      "Senior Portrait Package - $85.99": 85.99
         };
         const photoEditingPrices = {
             "None - $0": 0,
@@ -492,6 +596,14 @@
             "Digital Only": 0,
             "Digital + Poster": 29.99
         };
+
+    // Add-on prices
+    const addOnPrices = {
+      "christmas_card": 20,
+      "extra_outfit": 25,
+      "rush_edit": 40,
+      "extra_time_unit": 25 // per 30 minutes
+    };
 
         // Helper function to update active class and hidden input
         function setupOptionButtons(groupId, inputId, callback) {
@@ -525,6 +637,22 @@
                 const editingPackage = videoEditPrices[document.getElementById('video_editing_package_input').value] || 0;
                 total = sessionLength + editingPackage;
             }
+
+      // Include selected add-ons
+      try {
+        const christmasChecked = document.getElementById('add_on_christmas_card')?.checked;
+        const extraOutfit = document.getElementById('add_on_extra_outfit')?.checked;
+        const rushEdit = document.getElementById('add_on_rush_edit')?.checked;
+        const extraTimeCount = parseInt(document.getElementById('add_on_extra_time_count')?.value || 0, 10) || 0;
+
+        if (christmasChecked) total += addOnPrices.christmas_card;
+        if (extraOutfit) total += addOnPrices.extra_outfit;
+        if (rushEdit) total += addOnPrices.rush_edit;
+        if (extraTimeCount > 0) total += extraTimeCount * addOnPrices.extra_time_unit;
+      } catch (e) {
+        // if elements not present, ignore
+      }
+
             return total;
         }
 
@@ -604,13 +732,47 @@
         });
 
         // Other button groups
-        setupOptionButtons("sessionType", "session_type_input");
-        setupOptionButtons("sessionLength", "session_length_input");
+    setupOptionButtons("sessionType", "session_type_input");
+    // When a session length is selected, show package-specific add-ons if applicable
+    setupOptionButtons("sessionLength", "session_length_input", (val) => {
+      const addOnsSection = document.getElementById('packageAddOnsSection');
+      const christmas = document.getElementById('christmasAddOn');
+      const senior = document.getElementById('seniorAddOns');
+
+      // Hide all by default
+      if (addOnsSection) addOnsSection.style.display = 'none';
+      if (christmas) christmas.style.display = 'none';
+      if (senior) senior.style.display = 'none';
+
+      // Show when holiday package selected
+      if (val && val.includes('Holiday')) {
+        if (addOnsSection) addOnsSection.style.display = 'block';
+        if (christmas) christmas.style.display = 'block';
+      }
+
+      // Show senior-specific add-ons
+      if (val && val.toLowerCase().includes('senior')) {
+        if (addOnsSection) addOnsSection.style.display = 'block';
+        if (senior) senior.style.display = 'block';
+      }
+    });
         setupOptionButtons("videoSessionLength", "video_session_length_input");
         setupOptionButtons("editingPackage", "editing_package_input");
         setupOptionButtons("videoEditingPackage", "video_editing_package_input");
         setupOptionButtons("paymentMethod", "payment_method_input");
         setupOptionButtons("paymentType", "payment_type_input");
+
+    // Recalculate payment fields when add-on inputs change
+    const addOnInputs = [
+      'add_on_christmas_card',
+      'add_on_extra_outfit',
+      'add_on_rush_edit',
+      'add_on_extra_time_count'
+    ];
+    addOnInputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('change', updatePaymentFields);
+    });
 
         // Run initial setup
         initializeForm();

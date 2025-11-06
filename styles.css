@@ -500,6 +500,23 @@ body {
     }
 }
 
+/* Mobile hero adjustments: leave room for the stacked fixed header so it doesn't overlap content */
+@media (max-width: 768px) {
+    /* The header becomes taller on mobile (logo + CTA stacked). Give the hero enough top padding. */
+    .hero {
+        padding: 180px 0 60px; /* increased top padding for mobile */
+        min-height: calc(100vh - 180px); /* avoid full 100vh which causes overlap under fixed header */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Slightly smaller top padding for very small screens to balance space */
+    .hero {
+        padding: 160px 0 50px;
+        min-height: calc(100vh - 160px);
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
@@ -567,7 +584,7 @@ html {
 
 .packages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
@@ -581,6 +598,12 @@ html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid transparent;
     overflow: hidden;
+}
+
+/* Make package cards equal height and vertically layout content so buttons align */
+.package-item {
+    display: flex;
+    flex-direction: column;
 }
 
 .package-image {
@@ -634,11 +657,16 @@ html {
 
 .package-content {
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* pushes the button to the bottom */
 }
 
 .package-content ul {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    /* allow the list to take available space so card heights equalize nicely */
+    flex: 1 1 auto;
 }
 
 .package-content li {
@@ -667,6 +695,7 @@ html {
     text-align: center;
     transition: all 0.3s ease;
     border: 2px solid #8f99fb;
+    margin-top: 12px; /* space from the list and keep consistent placement */
 }
 
 .package-button:hover {
@@ -1297,6 +1326,28 @@ html {
     margin-top: 0.5rem;
     text-align: left;
 }
+/* Policy-note lists: make them compact and readable with purple checkmarks */
+.policy-note ul {
+    list-style: none;
+    padding-left: 0; /* we'll add our own left padding on lis */
+    margin: 6px 0 0 0;
+}
+.policy-note ul li {
+    color: #6c757d;
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    position: relative;
+    padding-left: 1.6rem;
+}
+.policy-note ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #8f99fb;
+    font-weight: 700;
+    top: 0;
+}
 
 .info-policies-pop {
     background: #faf9f6;
@@ -1506,6 +1557,64 @@ html {
   }
 }
 
+/* Center the Important Information & Policies card on desktop while keeping lists left-aligned */
+@media (min-width: 992px) {
+    .policies-card {
+        text-align: center; /* center headings and top-level content */
+    }
+
+    /* Keep lists visually left-aligned but center the block so it appears centered in the card */
+    .policies-card ul {
+        display: inline-block;
+        text-align: left;
+        padding-left: 0;
+        margin: 0 auto 1rem auto;
+        vertical-align: top;
+    }
+
+    .policies-card ul ul {
+        display: block; /* nested lists stay full-width within the inline-block */
+    }
+
+    .policies-card p,
+    .policies-card .policy-title {
+        text-align: center;
+    }
+}
+
+    /* Ensure the Important Information & Policies block is centered on wide screens */
+    @media (min-width: 1200px) {
+        .policies-form-flex {
+            justify-content: center; /* center the flex children */
+        }
+
+        /* Give the policies card a comfortable desktop width so it appears centered */
+        .policies-card {
+            flex: 0 0 720px; /* fixed base width on large screens */
+            max-width: 720px;
+        }
+
+        /* Keep booking card a bit narrower next to it if present */
+        .booking-card {
+            flex: 0 0 520px;
+            max-width: 520px;
+        }
+    }
+
+        /* Also center the standalone policies card used in the "Important Information & Policies" section */
+        @media (min-width: 992px) {
+            .info-policies-form .container {
+                display: flex;
+                justify-content: center;
+            }
+
+            .info-policies-form .policies-card {
+                max-width: 900px;
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+
 /* --- FORM CARD IMPROVEMENTS --- */
 .booking-card {
   background: #fff;
@@ -1609,6 +1718,56 @@ html {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+/* Package Add-Ons styling: match booking form look & feel */
+#packageAddOnsSection {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    border: 2px solid #f1f5f9;
+    box-shadow: 0 10px 30px rgba(143,153,251,0.06);
+    margin: 1rem 0 1.2rem 0;
+}
+
+#packageAddOnsSection h3 {
+    font-family: 'Playfair Display', serif;
+    color: #8f99fb;
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+#packageAddOnsSection label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #2c3e50;
+    font-size: 1rem;
+    padding: 0.45rem 0;
+}
+
+#packageAddOnsSection input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #8f99fb;
+    margin: 0;
+}
+
+#packageAddOnsSection input[type="number"] {
+    width: 88px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    background: #fff;
+    font-size: 0.95rem;
+}
+
+/* small visual hint for addon prices inside labels (if you later wrap prices in a span) */
+.addon-price {
+    color: #8f99fb;
+    font-weight: 700;
+    margin-left: 6px;
 }
 
 .social-link a {
