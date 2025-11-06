@@ -1,0 +1,10 @@
+# Ignore tools folder (local helpers, scripts, and sample submissions)
+tools/
+
+# Optional: common Python artifacts
+__pycache__/
+*.py[cod]
+
+# Node / general
+node_modules/
+.env

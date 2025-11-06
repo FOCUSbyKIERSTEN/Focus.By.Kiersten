@@ -184,7 +184,6 @@
             <li>1 outfit</li>
             <li>Up to 18 professionally edited digital photos</li>
             <li>Online gallery for viewing and downloading your images</li>
-            <li>Print release included</li>
           </ul>
           <p><strong>Optional Add-Ons:</strong> Extra outfit/additional location — +$25; Rush editing (within 4 days) — +$40; Additional time (every additional 30 minutes) — +$25</p>
           <p class="policy-note">Key booking details:</p>
@@ -375,7 +374,7 @@
   </div>
 </section>
 
-<form id="booking" class="contact-form booking-card" action="https://usebasin.com/f/d81c0657d817" method="POST" enctype="multipart/form-data">
+<form id="booking" class="contact-form booking-card" action="https://usebasin.com/f/7dbedc72874c" method="POST" enctype="multipart/form-data">
     <h2>Book Your Session</h2>
     <p>Please fill out the form completely to help me prepare for your session. All information is required unless noted otherwise.</p>
     
@@ -454,18 +453,19 @@
     <h3>Package Add-Ons</h3>
     <!-- Christmas Card add-on (for holiday packages) -->
     <div id="christmasAddOn" style="display:none; margin-bottom:0.8rem;">
-      <label><input type="checkbox" id="add_on_christmas_card" name="add_ons" value="Christmas Card"> Custom Christmas Card Design — +$20</label>
+      <label><input type="checkbox" id="add_on_christmas_card" name="add_on_christmas_card" value="Christmas Card"> Custom Christmas Card Design — +$20</label>
     </div>
 
     <!-- Senior package specific add-ons -->
     <div id="seniorAddOns" style="display:none; margin-bottom:0.8rem;">
-      <label><input type="checkbox" id="add_on_extra_outfit" name="add_ons" value="Extra Outfit"> Extra outfit or additional location — +$25</label>
+  <label><input type="checkbox" id="add_on_extra_outfit" name="add_on_extra_outfit" value="Extra Outfit"> Extra outfit or additional location — +$25</label>
       <br>
-      <label><input type="checkbox" id="add_on_rush_edit" name="add_ons" value="Rush Edit"> Rush editing (within 4 days) — +$40</label>
+  <label><input type="checkbox" id="add_on_rush_edit" name="add_on_rush_edit" value="Rush Edit"> Rush editing (within 4 days) — +$40</label>
       <br>
       <label>Additional 30-minute blocks: <input type="number" id="add_on_extra_time_count" name="add_on_extra_time_count" min="0" value="0" style="width:80px; margin-left:8px;"> (+$25 per 30 min)</label>
     </div>
   </div>
+  <input type="hidden" name="selected_add_ons" id="selected_add_ons_input" value="">
 
     <div id="videoEditingSection">
         <h3>Video Editing Packages</h3>
@@ -773,6 +773,29 @@
       const el = document.getElementById(id);
       if (el) el.addEventListener('change', updatePaymentFields);
     });
+
+    // Before submit, serialize selected add-ons into a single hidden field so servers reliably receive them
+    const bookingForm = document.getElementById('booking');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', function(evt) {
+        try {
+          const selected = [];
+          const christmas = document.getElementById('add_on_christmas_card');
+          const extraOutfit = document.getElementById('add_on_extra_outfit');
+          const rush = document.getElementById('add_on_rush_edit');
+          const extraTime = document.getElementById('add_on_extra_time_count');
+
+          if (christmas && christmas.checked) selected.push(christmas.value || 'Christmas Card');
+          if (extraOutfit && extraOutfit.checked) selected.push(extraOutfit.value || 'Extra Outfit');
+          if (rush && rush.checked) selected.push(rush.value || 'Rush Edit');
+          if (extraTime && parseInt(extraTime.value || '0', 10) > 0) selected.push('Extra Time x' + parseInt(extraTime.value, 10));
+
+          document.getElementById('selected_add_ons_input').value = JSON.stringify(selected);
+        } catch (e) {
+          // if anything fails, allow form to submit without the serialized field
+        }
+      });
+    }
 
         // Run initial setup
         initializeForm();
