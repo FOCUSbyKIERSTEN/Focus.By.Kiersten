@@ -1874,3 +1874,61 @@ html {
   text-decoration: underline;
   transform: none;
 }
+
+/* Mobile App Payment Links Styling */
+#mobileAppLinks {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  border: 2px solid #e9ecef;
+}
+
+#mobileAppLinks p {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+#mobileAppLinks a {
+  display: inline-block;
+  background-color: #8f99fb;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid #8f99fb;
+}
+
+#mobileAppLinks a:hover {
+  background-color: white;
+  color: #8f99fb;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(143, 153, 251, 0.3);
+}
+
+#mobileAppLinks a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(143, 153, 251, 0.3);
+}
+
+/* Responsive adjustments for mobile app links */
+@media (max-width: 768px) {
+  #mobileAppLinks {
+    padding: 1rem;
+  }
+
+  #mobileAppLinks a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}

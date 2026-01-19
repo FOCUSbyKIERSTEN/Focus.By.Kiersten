@@ -528,6 +528,12 @@
     </div>
     <input type="hidden" name="payment_method" id="payment_method_input">
 
+    <div id="mobileAppLinks" style="display: none; margin-top: 10px;">
+        <p><strong>Mobile App Payment Links:</strong></p>
+        <p><a href="https://venmo.com/u/Kiersten-Covic" target="_blank" rel="noopener noreferrer">Pay with Venmo</a></p>
+        <p><a href="https://cash.app/$KierstenCovic" target="_blank" rel="noopener noreferrer">Pay with Cash App</a></p>
+    </div>
+
     <label>Pay in Full Upfront? (10% discount):</label>
     <div class="button-group" id="paymentType">
         <button type="button" data-value="Yes" class="option-btn">Yes</button>
@@ -759,7 +765,12 @@
         setupOptionButtons("videoSessionLength", "video_session_length_input");
         setupOptionButtons("editingPackage", "editing_package_input");
         setupOptionButtons("videoEditingPackage", "video_editing_package_input");
-        setupOptionButtons("paymentMethod", "payment_method_input");
+        setupOptionButtons("paymentMethod", "payment_method_input", (val) => {
+            const mobileLinks = document.getElementById('mobileAppLinks');
+            if (mobileLinks) {
+                mobileLinks.style.display = val === "Mobile App" ? "block" : "none";
+            }
+        });
         setupOptionButtons("paymentType", "payment_type_input");
 
     // Recalculate payment fields when add-on inputs change
